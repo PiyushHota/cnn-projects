@@ -25,6 +25,12 @@ of cats and dogs using TensorFlow and Keras.
 - Training images: Cats and Dogs
 - Source: Kaggle Dogs vs Cats Dataset
 - Train / Test Split: 80% / 20%
+  
+## 📊 Dataset Take from
+- Dataset by: Ahmed Aboenaba on Kaggle
+- Link: https://www.kaggle.com/code/ahmedaboenaba/cats-vs-dogs-traditional-ml/input
+- ⚠️ Dataset is NOT mine — all credit goes to the original author
+- Download the dataset from the link above and place it in the dataset/ folder
 
 ## 🚀 How to Run
 1. Clone the repository
