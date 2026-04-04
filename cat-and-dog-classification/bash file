@@ -1,0 +1,49 @@
+import os
+import shutil
+
+# SOURCE
+src_cats = r"G:\da project\cnn project\cat and dog dataset\dataset\PetImages\Cat"
+src_dogs = r"G:\da project\cnn project\cat and dog dataset\dataset\PetImages\Dog"
+
+# DESTINATION
+base_path = r"G:\da project\cnn project\cat and dog dataset\dataset"
+
+train_cats = os.path.join(base_path, "train/cats")
+val_cats   = os.path.join(base_path, "validation/cats")
+
+train_dogs = os.path.join(base_path, "train/dogs")
+val_dogs   = os.path.join(base_path, "validation/dogs")
+
+# Create folders
+os.makedirs(train_cats, exist_ok=True)
+os.makedirs(val_cats, exist_ok=True)
+os.makedirs(train_dogs, exist_ok=True)
+os.makedirs(val_dogs, exist_ok=True)
+
+# Get file list
+cats = os.listdir(src_cats)
+dogs = os.listdir(src_dogs)
+
+# Split (80% train, 20% validation)
+split_ratio = 0.8
+
+split_cats = int(len(cats) * split_ratio)
+split_dogs = int(len(dogs) * split_ratio)
+
+# Move cats
+for i, file in enumerate(cats):
+    src = os.path.join(src_cats, file)
+    if i < split_cats:
+        shutil.copy(src, train_cats)
+    else:
+        shutil.copy(src, val_cats)
+
+# Move dogs
+for i, file in enumerate(dogs):
+    src = os.path.join(src_dogs, file)
+    if i < split_dogs:
+        shutil.copy(src, train_dogs)
+    else:
+        shutil.copy(src, val_dogs)
+
+print("Dataset split done ✅")
